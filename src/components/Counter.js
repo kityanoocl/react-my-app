@@ -24,6 +24,12 @@ export default class Counter extends Component {
         })
     }
 
+    componentDidUpdate(prevProps, prevState) {
+        if (prevState.number != this.state.number) {
+            this.props.onCalculate((prevState.number > this.state.number) ? -1 : 1);
+        }
+    }
+
     render() {
         return (
             <div>

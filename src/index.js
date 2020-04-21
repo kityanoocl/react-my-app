@@ -8,7 +8,7 @@ import CounterGroup from './components/CounterGroup';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Counter />
+    <CounterGroup size={5}/>
   </React.StrictMode>,
   document.getElementById('root')
 );
