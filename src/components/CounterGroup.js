@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import {INIT_COUNTERS_SIZE} from '../constants/Constants'
 import Counter from './Counter'
 
 export default class CounterGroup extends Component {
@@ -8,7 +9,7 @@ export default class CounterGroup extends Component {
         this.onChange = this.onChange.bind(this)
 
         this.state = {
-             size : 2
+             size : INIT_COUNTERS_SIZE
         }
     }
     
