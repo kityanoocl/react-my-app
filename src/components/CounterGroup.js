@@ -20,14 +20,14 @@ export default class CounterGroup extends Component {
     }
 
     onChange(event) {
-        const value = event.target.value
+        const value = event.target.value.length > 0? parseInt(event.target.value) : 0
         this.setState({
-            size: value.length > 0 ? parseInt(value) : 0
+            size: value
         })
     }
 
     onCalculate(changeOfValue) {
-        this.setState({sum : this.state.sum + changeOfValue})
+        this.setState(prevState => ({sum : prevState.sum + changeOfValue}))
     }
 
     render() {
@@ -38,9 +38,9 @@ export default class CounterGroup extends Component {
                     <input onChange={this.onChange} type="text" value={this.state.size}/>
                 </form>
                 <p>The sum of all counters is {this.state.sum}.</p>
-                {counters.map((value) => (
-                    <Counter key={value} onCalculate={this.onCalculate}/>
-                ))}
+                {counters.map((value) => {
+                    return <Counter key={value} number={0} onCalculate={this.onCalculate}/>
+                })}
             </div>
         )
     }

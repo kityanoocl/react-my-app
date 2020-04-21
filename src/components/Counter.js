@@ -8,7 +8,7 @@ export default class Counter extends Component {
         this.onDecrease = this.onDecrease.bind(this)
 
         this.state = {
-             number : 0
+             number : props.number
         }
     }
     
@@ -28,6 +28,10 @@ export default class Counter extends Component {
         if (prevState.number != this.state.number) {
             this.props.onCalculate((prevState.number > this.state.number) ? -1 : 1);
         }
+    }
+
+    componentWillUnmount() {
+        this.props.onCalculate(-1 * this.state.number)
     }
 
     render() {
