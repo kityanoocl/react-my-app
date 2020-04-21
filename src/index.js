@@ -3,11 +3,12 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import Counter from './Counter';
+import Counter from './components/Counter';
+import CounterGroup from './components/CounterGroup';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Counter />
+    <CounterGroup />
   </React.StrictMode>,
   document.getElementById('root')
 );
