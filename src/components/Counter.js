@@ -13,14 +13,14 @@ export default class Counter extends Component {
     }
     
     onIncrease() {
-        this.setState({
-            number : this.state.number + 1
+        this.setState(prevState => {
+            return {number : prevState.number + 1}
         })
     }
 
     onDecrease() {
-        this.setState({
-            number : this.state.number - 1
+        this.setState(prevState => {
+            return {number : prevState.number - 1}
         })
     }
 
