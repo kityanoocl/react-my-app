@@ -1,26 +1,28 @@
 import React, { Component } from 'react'
+import { Button, Row, Col } from 'antd'
+import ReactDOM from 'react-dom';
 
 export default class Counter extends Component {
     constructor(props) {
         super(props)
-    
+
         this.onIncrease = this.onIncrease.bind(this)
         this.onDecrease = this.onDecrease.bind(this)
 
         this.state = {
-             number : props.number
+            number: props.number
         }
     }
-    
+
     onIncrease() {
         this.setState(prevState => {
-            return {number : prevState.number + 1}
+            return { number: prevState.number + 1 }
         })
     }
 
     onDecrease() {
         this.setState(prevState => {
-            return {number : prevState.number - 1}
+            return { number: prevState.number - 1 }
         })
     }
 
@@ -36,11 +38,17 @@ export default class Counter extends Component {
 
     render() {
         return (
-            <div>
-                <button onClick = {this.onIncrease}>+</button>
-                {this.state.number}
-                <button onClick = {this.onDecrease}>-</button>
-            </div>
+            <Row justify="space-around" align="middle">
+                <Col span={1}>
+                    <Button type="primary" shape="circle" onClick={this.onIncrease}>+</Button>
+                </Col>
+                <Col span={1}>
+                    {this.state.number}
+                </Col>
+                <Col span={1}>
+                    <Button type="primary" shape="circle" onClick={this.onDecrease} danger>-</Button>
+                </Col>
+            </Row>
         )
     }
 }
