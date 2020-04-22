@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { INIT_COUNTERS_SIZE, INIT_COUNTERS_SUM } from '../constants/Constants'
 import Counter from './Counter'
+import CounterApi from '../apis/CounterApi'
 
 export default class CounterGroup extends Component {
     constructor(props) {
@@ -15,14 +16,22 @@ export default class CounterGroup extends Component {
         }
     }
 
+    componentDidMount() {
+        CounterApi.getNumOfCounters().then(response => {
+            const size = response.data.size
+            this.setState({size : size})
+        })
+    }
+
     initArray(size) {
         return Array.from(Array(size).keys())
     }
 
     onChange(event) {
-        const value = event.target.value.length > 0? parseInt(event.target.value) : 0
-        this.setState({
-            size: value
+        const value = event.target.value.length > 0 ? parseInt(event.target.value) : 0
+        this.setState({size: value})
+        CounterApi.setNumOfCounters(value).then(response => {
+            console.log(response)
         })
     }
 
