@@ -18,6 +18,7 @@ export default class CounterGroup extends Component {
 
     componentDidMount() {
         CounterApi.getNumOfCounters().then(response => {
+            console.log(response)
             const size = response.data.size
             this.setState({size : size})
         })
@@ -29,9 +30,10 @@ export default class CounterGroup extends Component {
 
     onChange(event) {
         const value = event.target.value.length > 0 ? parseInt(event.target.value) : 0
-        this.setState({size: value})
         CounterApi.setNumOfCounters(value).then(response => {
             console.log(response)
+            const size = response.data.size
+            this.setState({size : size})
         })
     }
 
